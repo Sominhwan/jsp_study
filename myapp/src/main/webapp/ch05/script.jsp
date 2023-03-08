@@ -19,3 +19,13 @@
 선언문1 : <%=dec%><p>
 선언문2 : <%=decMethod()%><p>
 선언문3 : <%=scriptlet%><p>
+<%
+	String comment = "Comment";
+%>
+<!-- JSP주석1 <%=comment%> -->
+<%-- JSP주석2 : <%=comment%> --%>
+<%
+	// 한줄 주석
+	/* 여러줄 및 부분주석*/
+%>
+<!--  HTML 주석 -->
