@@ -16,7 +16,6 @@
 		url = "idCheck.jsp?id="+id;
 		window.open(url,"ID 증복체크","width=300, height=150, top=100, left=100");
 	}
-	
 	function zipSearch() {
 		url = "zipSearch.jsp?search=n";
 		window.open(url,"우편번호 검색","width=500, height=300, top=100, left=100, scrollbars=yes");
