@@ -6,6 +6,15 @@ public class ZipcodeBean {
 	private String area2;
 	private String area3;
 	
+	public ZipcodeBean() {
+		
+	}
+	public ZipcodeBean(String zipcode, String area1, String area2, String area3) {
+		this.zipcode = zipcode;
+		this.area1 = area1;
+		this.area2 = area2;
+		this.area3 = area3;
+	}
 	public String getZipcode() {
 		return zipcode;
 	}
