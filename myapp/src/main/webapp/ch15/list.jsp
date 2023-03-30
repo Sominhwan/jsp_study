@@ -15,6 +15,9 @@
 	int nowBlock = 1; // 현재 블럭
 	
 	// 요청된 numPerPage 처리
+	if(request.getParameter("numPerPage")!=null){
+		numPerPage = UtilMgr.parseInt(request, "numPerPage");
+	}
 	
 	// 검색에 필요한 변수
 	String keyField = "", keyWord = "";
@@ -28,10 +31,6 @@
 		request.getParameter("reload").equals("true")){
 		keyField="";keyWord="";
 	}
-	
-		
-		
-	
 	
 	totalRecord = mgr.getTotalCount(keyField, keyWord);
 	//out.print(totalRecord);
@@ -81,9 +80,15 @@
 	   document.readFrm.submit();
 	}
 	function numPerFn(numPerPage){
-		alert(numPerPage);
+		//alert(numPerPage);
+		document.readFrm.numPerPage.value=numPerPage;
+		document.readFrm.submit();
 	}
-	
+	function read(num){
+		document.readFrm.num.value=num;
+		document.readFrm.action="read.jsp";
+		document.readFrm.submit();
+	}
 </script>
 </head>
 <body bgcolor="#FFFFCC" >
@@ -104,6 +109,7 @@
     				<option value="15">15개 보기</option>
     				<option value="30">30개 보기</option>
    				</select>
+   				<script>document.npFrm.numPerPage.value=<%=numPerPage%></script>
    			</form>
 		</td>
 	</tr>
@@ -141,7 +147,8 @@
 				<tr align="center">
 					<td><%=totalRecord-start-i%></td>
 					<td align="left">
-					<%=subject%>
+					<a href="javascript:read('<%=num%>')">
+					<%=subject%></a>
 					<%if(filename!=null&&!filename.equals("")){ %>
 						<img alt="첨부파일" src="img/icon.gif" align="middle">
 					<%}%>
