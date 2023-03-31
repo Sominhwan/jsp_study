@@ -4,7 +4,7 @@
 <%@page import="ch15.UtilMgr"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="mgr" class="ch15.BoardMgr"/>
-
+<jsp:useBean id="cmgr" class="ch15.BCommentMgr"/>
 <%
 	int totalRecord = 0; // 총 게시물수	
 	int numPerPage = 10; // 페이지당 레코드 개수()
@@ -143,15 +143,22 @@
 						int depth = bean.getDepth();
 						int count = bean.getCount();
 						String filename = bean.getFilename();
+						// 댓글 count
+						int bcount = cmgr.getBCommentCount(num);
 				%>
 				<tr align="center">
 					<td><%=totalRecord-start-i%></td>
 					<td align="left">
+					<%for(int j=0;j<depth;j++){out.println("&nbsp;&nbsp;");} %>
 					<a href="javascript:read('<%=num%>')">
 					<%=subject%></a>
 					<%if(filename!=null&&!filename.equals("")){ %>
 						<img alt="첨부파일" src="img/icon.gif" align="middle">
 					<%}%>
+					<%if(bcount>0){ %>
+						<font color="red">(<%=bcount%>)</font>
+					<%} %>
+					
 					
 					</td>
 					<td><%=name%></td>
