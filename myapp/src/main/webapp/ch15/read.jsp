@@ -1,4 +1,5 @@
 <!-- read.jsp -->
+<%@page import="java.util.Vector"%>
 <%@page import="ch15.BCommentBean"%>
 <%@page import="ch15.BoardBean"%>
 <%@page import="ch15.UtilMgr"%>
@@ -75,6 +76,11 @@
 		}
 		document.delFrm.pass.value=pass.value;
 		document.delFrm.submit();
+	}
+	function cDel(cnum) {
+		document.cFrm.cnum.value=cnum;
+		document.cFrm.flag.value="delete";
+		document.cFrm.submit();
 	}
 </script>
 </head>
@@ -156,6 +162,37 @@
   <!-- 댓글 입력폼 End -->
  <hr/>
  <!-- 댓글 List Start -->
+ <% 
+ Vector<BCommentBean> cvlist=cmgr.getBComment(num);
+ if(!cvlist.isEmpty()){
+	 //out.println(cvlist.size());
+ %>
+ <table>
+ 	<%
+ 		for(int i=0;i<cvlist.size();i++){
+ 			BCommentBean cbean = cvlist.get(i);
+ 			int cnum = cbean.getCnum();
+ 			String cname = cbean.getName();
+ 			String comment = cbean.getComment();
+ 			String cregdate = cbean.getRegdate();
+ 	%>	
+ 	<tr>
+		<td colspan="3" width="600"><b><%=cname%></b></td>
+	</tr>
+	<tr>
+		<td>댓글:<%=comment%></td>
+		<td align="right"><%=cregdate%></td>
+		<td align="center" valign="middle">
+		<input type="button" value="삭제" onclick="cDel('<%=cnum%>')">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3"><br></td>
+	</tr>
+ 	<%	} // --for%>
+ </table>
+ <%} //--if %>
+ 
  
  <!-- 댓글 List End -->
  [ <a href="javascript:list()" >리스트</a> | 
