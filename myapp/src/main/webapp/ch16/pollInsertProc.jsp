@@ -5,7 +5,7 @@
 <jsp:useBean id="pibean" class="ch16.PollItemBean"/>
 <jsp:setProperty property="*" name="pibean"/>
 <%
-	boolean result = mgr.InsertPoll(plbean, pibean);
+	boolean result = mgr.insertPoll(plbean, pibean);
 	String msg = "설문 추가 실패";
 	String url = "pollInsert.jsp";
 	if(result){

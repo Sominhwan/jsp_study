@@ -7,8 +7,7 @@
 <%
    int num = 0; 
    if(request.getParameter("num") != null){
-      num = UtilMgr.parseInt(request, "num");
-      
+      num = UtilMgr.parseInt(request, "num");  
    }
    
    PollListBean plBean = mgr.getPoll(num);
@@ -16,7 +15,7 @@
    String question = plBean.getQuestion();
    int type = plBean.getType();
    int active = plBean.getActive();
-   int sumCount = 0; //미구현
+   int sumCount = mgr.sumCount(num); //미구현
    //out.print(question  +" : " + vItem.size());
 %>
 
