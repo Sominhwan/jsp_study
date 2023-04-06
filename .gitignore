@@ -1,3 +1,5 @@
 /.metadata
 /Servers
 /Tomcat 9.0
+/myapp/src/main/java/sns
+/myapp/src/main/webapp/sns
