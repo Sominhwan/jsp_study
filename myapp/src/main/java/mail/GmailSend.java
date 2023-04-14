@@ -53,14 +53,6 @@ public class GmailSend {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args) {
-		String title = "제목 테스트1";
-		String content = "내용 테스트2";
-		String toEmail = "thalsghks@naver.com";
-		GmailSend.send(title, content, toEmail);
-		System.out.println("성공~~~~~~");
-	}
 }
 
 
